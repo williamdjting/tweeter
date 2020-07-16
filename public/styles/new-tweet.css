@@ -1,0 +1,60 @@
+/* <main class="container newtweetcontainer">
+<section class="new-tweet">
+  <h2>Compose Tweet</h2>
+  <form method="POST" action="/tweets/">
+    <label for="tweet-text">What are you humming about?</label>
+    <textarea class="newtweetform" name="text" id="tweet-text">What are you humming about?</textarea>
+    <div>
+      <button class="newtweetsubmitbutton" type="submit">Tweet</button>
+      <output class="counter" name="counter" class="counter" for="tweet-text">140</output>
+    </div>
+  </form>
+  <h3>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  </h3>
+</section>
+
+</main> */
+
+.new-tweet {
+  justify-content: center;
+  align-items: center;
+  margin-left: 150px;
+}
+
+.newtweetcontainer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-bottom: 50px;
+}
+
+.newtweetsubmitbutton {
+  background-color: blue;
+  color: white;
+  font-family: 'Bungee', cursive;
+  font-size: 24px;
+  margin-top: 25px;
+}
+
+.newtweetform {
+  width: 800px;
+  background-color: #f4f1ec;
+  border: black;
+}
+
+.counter {
+  font-family: 'Bungee', cursive;
+  font-size: 24px;
+  justify-content: flex-end;
+  margin-left: 650px;
+}
+
+h2 {
+  align-items: center;
+}
+
+#tweet-text {
+  font-weight: 500;
+  font-size: 32px;
+}
