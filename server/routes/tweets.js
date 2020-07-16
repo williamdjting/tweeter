@@ -17,9 +17,11 @@ module.exports = function(DataHelpers) {
     });
   });
 
-  tweetsRoutes.post("/tweets/"), function(req, res) {
-    // user later for jquery
-    }
+  // tweetsRoutes.post("/tweets/"), function(req, res) {
+  //   // user later for jquery
+    
+
+  // }
 
 
   tweetsRoutes.post("/", function(req, res) {

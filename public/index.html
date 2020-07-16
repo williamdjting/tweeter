@@ -56,8 +56,11 @@
     <!-- Page-specific (main) content here -->
     <main class="container newtweetcontainer">
       <section class="new-tweet">
+        <h3 class="validationerror">
+        "There is an error here. Please fix this field."
+        </h3>
         <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets/" class="newtweetformmethod">
+        <form class="newtweetformmethod">
           <textarea class="newtweetform" name="text" id="tweet-text">What are you humming about?</textarea>
           <div>
               <button class="newtweetsubmitbutton" type="submit">Tweet</button>
@@ -67,7 +70,7 @@
       </section>
 
       <section class="section-tweetcontainer">
-      
+        
       </section>
     </main>
   </body>

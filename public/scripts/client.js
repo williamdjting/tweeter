@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
+  //$('.newtweetformmethod').text($tweet);
   const data = [
     {}
   ]
@@ -16,11 +17,18 @@ $(document).ready(function () {
       console.log(tweets[tweet]);
       console.log(tweet);
       $tweet = createTweetElement(tweets[tweet])
-      $('.section-tweetcontainer').append($tweet);
+      console.log($tweet);
+      $('.section-tweetcontainer').prepend($tweet);
     }
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
 
+  }
+
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
   }
 
   const createTweetElement = function (tweet) {
@@ -34,7 +42,7 @@ $(document).ready(function () {
   
   </header>
     <p class="article-body">
-      ${tweet.content.text}
+      ${escape(tweet.content.text)}
     </p>        
   <footer class="article-footer">
     <div class="article-div-footer">
@@ -53,28 +61,25 @@ $(document).ready(function () {
   //renderTweets(data);
 
   //console.log( "ready!" ); 
-
+  $('.validationerror').hide();
   $('.newtweetformmethod').submit(function (event) {
     event.preventDefault();
     var textarea = $("#tweet-text").val();
-
-    if (textarea === "") {
-      alert("This field cannot be empty.");
-    }
-
-    if (textarea === null) {
-      alert("This field cannot be empty.");
-    }
-
-    if (textarea.length > 140) {
-      alert("This field must be less than 140 characters");
-    }
     
-    $.ajax({
+    if (textarea === "" || textarea === null) {
+      $('.validationerror').slideDown(400);
+      
+    } else if (textarea.length > 140) {
+      $('.validationerror').slideDown(400);
+    } else {
+      $('.validationerror').hide();
+      $.ajax({
       url: '/tweets',
       method: "POST",
       data: $(this).serialize()
     });
+    }
+    loadTweets();
   });
 
   const loadTweets = function () {
@@ -89,16 +94,35 @@ $(document).ready(function () {
 });
 
 
-// var textarea = $("#tweet-text").val();
 
-// if (textarea === "") {
-//   alert("This field cannot be empty.");
-// }
+// $('.newtweetformmethod').submit(function (event) {
+//   //event.preventDefault();
+//   var textarea = $("#tweet-text").val();
+  
+//   if (textarea === "" || textarea === null) {
+//     alert("This field cannot be empty.");
+//     event.preventDefault();
+//   }
 
-// if (textarea === null) {
-//   alert("This field cannot be empty.");
-// }
+//   if (textarea.length > 140) {
+//     alert("This field must be less than 140 characters");
+//     event.preventDefault();
+//   }
 
-// if (textarea.length > 140) {
-//   alert("This field must be less than 140 characters");
+//   $.ajax({
+//     url: '/tweets',
+//     method: "POST",
+//     data: $(this).serialize()
+//   });
+
+//   $.post("/tweets", function( data ) {
+//     console.log("success", data);
+//   });
+// });
+
+// const loadTweets = function () {
+//   $.ajax("/tweets", { method: 'GET' }).done(function (data) {
+//     console.log(data);
+//     renderTweets(data);
+//   });
 // }
