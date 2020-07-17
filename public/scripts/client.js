@@ -32,32 +32,30 @@ $(document).ready(function () {
   }
 
   const createTweetElement = function (tweet) {
-    let $tweet = `<article class="article-article">
-  <header class="article-header">
-    <div class="article-div-header">
-      <img class="article-image" src=${tweet.user.avatars}> 
-      <p class="article-name">${tweet.user.name}</p>  
-    </div>
-    <p class="article-username">${tweet.user.handle}</p> 
-  
-  </header>
-    <p class="article-body">
-      ${escape(tweet.content.text)}
-    </p>        
-  <footer class="article-footer">
-    <div class="article-div-footer">
-      <p>
-      ${(new Date(tweet.created_at).toLocaleString())}
-      
-      </p>
-      <div class="article-div-footer-icons">
-        <p class ="article-flag"> Flag </p> 
-        <p class ="article-retweet"> Retweet </p> 
-        <p class="article-heart"> Heart </p>
-      </div>
-    </div>  
-  </footer>
-  </article>`
+    const $tweet = `
+      <article class="article-article">
+        <header class="article-tweet-container">
+          <div class="article-div-header">
+            <img class="article-image" src=${tweet.user.avatars}> 
+            <p class="article-name">${tweet.user.name}</p>  
+          </div>
+          <p class="article-username">${tweet.user.handle}</p> 
+        </header>
+          <p class="article-body">
+            ${escape(tweet.content.text)}
+          </p>        
+          <footer class="article-footer">
+            <div class="article-div-footer">
+              <p>${(new Date(tweet.created_at).toLocaleString())}</p>
+            </div>
+            <div class="article-div-footer-icons">
+              <p class ="article-flag"></p> 
+              <p class ="article-retweet"></p> 
+              <p class="article-heart"></p>
+            </div> 
+          </footer>
+        </article>
+    `
     return $tweet;
   }
 

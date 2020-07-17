@@ -7,6 +7,9 @@ header {
   justify-content: center;
   align-items: center;
   background-color: aliceblue;
+}
+
+.headerimage {
   background-image: url("https://www.transparenttextures.com/patterns/tiny-grid.png");
 }
 
@@ -14,8 +17,4 @@ header {
   flex-direction: column;
   margin-top: 100px;
   margin-left: 25px;
-}
-
-.yourname {
-  
 }

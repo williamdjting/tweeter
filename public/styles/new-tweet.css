@@ -1,4 +1,5 @@
 
+
 .validationerror {
   opacity: 1;
   border-color: red;
@@ -13,6 +14,7 @@
   justify-content: center;
   align-items: center;
   margin-left: 0em;
+  margin-top: 10px;
 } 
 
 .newtweetcontainer {
@@ -33,17 +35,15 @@
   width: 800px;
   background-color: #f4f1ec;
   border-bottom: 5px black;
-  border-width: 4px;
+  border: none;
   border-style: solid;
-  border: 0;
+  border-width: 0px 0px 5px 0px;
 }
 
 
 .counter {
   font-family: 'Bungee', cursive;
   font-size: 24px;
-  /* justify-content: space-between;
-  margin-left: 650px; */
 }
 
 .tweetcounterbar {
