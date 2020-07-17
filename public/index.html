@@ -33,12 +33,18 @@
     <!-- Counter JS -->
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
+    <!-- Viewport -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
   </head>
 
-  <body>
+  <body class="tweetercontents">
     <!-- Top nav bar (fixed) -->
     <nav class="sticky content">
+      <div class="navicons">
       <span>tweeter</span>
+      <span id="toprighttweet">Write a new tweet</span>
+      </div>
     </nav>
 
     <header>
@@ -48,7 +54,7 @@
         </div>
       <br>
         <div>
-          <h2 class="yourname">Your Name</h2>
+          <h2 class="yourname">William Ting</h2>
         </div>
       </div>
   </header>
@@ -62,7 +68,7 @@
         <h2>Compose Tweet</h2>
         <form class="newtweetformmethod">
           <textarea class="newtweetform" name="text" id="tweet-text">What are you humming about?</textarea>
-          <div>
+          <div class="tweetcounterbar">
               <button class="newtweetsubmitbutton" type="submit">Tweet</button>
               <output class="counter" name="counter" class="counter" for="tweet-text">140</output>
           </div>

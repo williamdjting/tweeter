@@ -46,7 +46,8 @@ $(document).ready(function () {
     </p>        
   <footer class="article-footer">
     <div class="article-div-footer">
-      <p>${tweet.created_at}</p>
+      <p>
+      ${tweet.created_at}</p>
       <div class="article-div-footer-icons">
         <p class ="article-flag"> Flag </p> 
         <p class ="article-retweet"> Retweet </p> 
@@ -58,9 +59,6 @@ $(document).ready(function () {
     return $tweet;
   }
 
-  //renderTweets(data);
-
-  //console.log( "ready!" ); 
   $('.validationerror').hide();
   $('.newtweetformmethod').submit(function (event) {
     event.preventDefault();
@@ -79,6 +77,8 @@ $(document).ready(function () {
       data: $(this).serialize()
     });
     }
+    $(this).find("#tweet-text").val('');
+    $(this).find(".counter").text("140");
     loadTweets();
   });
 
@@ -88,41 +88,6 @@ $(document).ready(function () {
       renderTweets(data);
     });
   }
-
-
+ 
   loadTweets();
 });
-
-
-
-// $('.newtweetformmethod').submit(function (event) {
-//   //event.preventDefault();
-//   var textarea = $("#tweet-text").val();
-  
-//   if (textarea === "" || textarea === null) {
-//     alert("This field cannot be empty.");
-//     event.preventDefault();
-//   }
-
-//   if (textarea.length > 140) {
-//     alert("This field must be less than 140 characters");
-//     event.preventDefault();
-//   }
-
-//   $.ajax({
-//     url: '/tweets',
-//     method: "POST",
-//     data: $(this).serialize()
-//   });
-
-//   $.post("/tweets", function( data ) {
-//     console.log("success", data);
-//   });
-// });
-
-// const loadTweets = function () {
-//   $.ajax("/tweets", { method: 'GET' }).done(function (data) {
-//     console.log(data);
-//     renderTweets(data);
-//   });
-// }

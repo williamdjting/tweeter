@@ -15,23 +15,3 @@ $(document).ready(function() {
     }
   });
 });
-
-
-
-
-
-
-// <main class="container newtweetcontainer">
-//       <section class="new-tweet">
-//         <h2>Compose Tweet</h2>
-//         <form method="POST" action="/tweets/">
-//           <textarea class="newtweetform" name="text" id="tweet-text">What are you humming about?</textarea>
-//           <div>
-//               <button class="newtweetsubmitbutton" type="submit">Tweet</button>
-//               <output class="counter" name="counter" class="counter" for="tweet-text">140</output>
-//           </div>
-
-//         </form>
-        
-//       </section>
-//     </main>
