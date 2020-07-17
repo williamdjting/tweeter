@@ -47,7 +47,9 @@ $(document).ready(function () {
   <footer class="article-footer">
     <div class="article-div-footer">
       <p>
-      ${tweet.created_at}</p>
+      ${(new Date(tweet.created_at).toLocaleString())}
+      
+      </p>
       <div class="article-div-footer-icons">
         <p class ="article-flag"> Flag </p> 
         <p class ="article-retweet"> Retweet </p> 

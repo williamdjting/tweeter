@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // --- our code goes here ---
-  $("#tweet-text").on('keypress', function() {
+  $("#tweet-text").on('input', function() {
     const numberOfPresses = $(this).val();
     let num = 1;
     num = 140 - (numberOfPresses.length)

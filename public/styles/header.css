@@ -13,7 +13,7 @@ header {
 .container {
   flex-direction: column;
   margin-top: 100px;
-  margin-left: 25px
+  margin-left: 25px;
 }
 
 .yourname {
