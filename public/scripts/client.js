@@ -14,24 +14,25 @@ $(document).ready(function () {
     let $tweet;
     for (let tweet in tweets) {
       tweets[tweet]
-      console.log(tweets[tweet]);
-      console.log(tweet);
+      // calls createTweetElement for each tweet
       $tweet = createTweetElement(tweets[tweet])
-      console.log($tweet);
+      // takes return value and prepends it to the tweets container
       $('.section-tweetcontainer').prepend($tweet);
     }
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
-
   }
 
-  const escape =  function(str) {
+  //escape is called in createTweetElement function
+  const escape = function (str) {
+    //creates div element
     let div = document.createElement('div');
+    //takes any non string query and puts it into a div and pulls out the innerHTML string to escape any string injection
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   }
 
+
   const createTweetElement = function (tweet) {
+    //$tweet becomes the html with template literals that parse through the tweet database/json to pull the relevant object key/value and displays it within the prepended section of the html
     const $tweet = `
       <article class="article-article">
         <header class="article-tweet-container">
@@ -56,38 +57,49 @@ $(document).ready(function () {
           </footer>
         </article>
     `
+    //returns $tweet variable to renderTweets function
     return $tweet;
   }
 
+  //hides the error message
   $('.validationerror').hide();
+
+  //when the tweet form is submitted, the value of the tweet form is given to the text area variable
   $('.newtweetformmethod').submit(function (event) {
     event.preventDefault();
     var textarea = $("#tweet-text").val();
-    
+
+    //if text area variable is empty or null, show error message
     if (textarea === "" || textarea === null) {
       $('.validationerror').slideDown(400);
-      
+      //otherwise if text area is above 140 inputs, show error message
     } else if (textarea.length > 140) {
       $('.validationerror').slideDown(400);
+      //otherwise keep hidden
     } else {
       $('.validationerror').hide();
+      
+      //sends the submission to the /tweets url as a POST
       $.ajax({
-      url: '/tweets',
-      method: "POST",
-      data: $(this).serialize()
-    });
+        url: '/tweets',
+        method: "POST",
+        data: $(this).serialize()
+      });
     }
+    //finds the #tweet-text area and resets the counter to 140 once a tweet is submitted
     $(this).find("#tweet-text").val('');
     $(this).find(".counter").text("140");
+
     loadTweets();
   });
 
+  //performs a GET to /tweets url in order to render the tweet from renderTweets function
   const loadTweets = function () {
     $.ajax("/tweets", { method: 'GET' }).done(function (data) {
-      console.log(data);
       renderTweets(data);
     });
   }
- 
+
+  //calls the loadTweets
   loadTweets();
 });
