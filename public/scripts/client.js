@@ -47,7 +47,7 @@ $(document).ready(function () {
           </p>        
           <footer class="article-footer">
             <div class="article-div-footer">
-              <p>${(new Date(tweet.created_at).toLocaleString())}</p>
+              <p>${(moment(new Date(tweet.created_at)).fromNow())}</p>
             </div>
             <div class="article-div-footer-icons">
               <p class ="article-flag"></p> 
@@ -84,17 +84,21 @@ $(document).ready(function () {
         url: '/tweets',
         method: "POST",
         data: $(this).serialize()
-      });
+      })
+      .done ( () => (loadTweets()))
     }
     //finds the #tweet-text area and resets the counter to 140 once a tweet is submitted
     $(this).find("#tweet-text").val('');
     $(this).find(".counter").text("140");
 
-    loadTweets();
+    
   });
 
   //performs a GET to /tweets url in order to render the tweet from renderTweets function
+  
+  
   const loadTweets = function () {
+    $('.section-tweetcontainer').empty()
     $.ajax("/tweets", { method: 'GET' }).done(function (data) {
       renderTweets(data);
     });
@@ -102,4 +106,6 @@ $(document).ready(function () {
 
   //calls the loadTweets
   loadTweets();
+
+  
 });
